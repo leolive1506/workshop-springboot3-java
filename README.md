@@ -4,3 +4,6 @@
 
 # Lazy loading
 - para ter comportamento lazy loading adicionar @JsonIgnore no relacionamento
+
+# service
+- faz a regra de negocio do app para desacoplar a lógica dos controllers
