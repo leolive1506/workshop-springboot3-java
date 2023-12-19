@@ -7,3 +7,10 @@
 
 # service
 - faz a regra de negocio do app para desacoplar a lógica dos controllers
+
+# PathVariable x RequestBody
+- PathVariable
+  - pega o path variavel da url 
+  - /users/{id} -> no caso seria id
+- RequestBody
+  - request json enviado na requisição
