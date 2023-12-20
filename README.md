@@ -14,3 +14,10 @@
   - /users/{id} -> no caso seria id
 - RequestBody
   - request json enviado na requisição
+
+# @ControllerAdvice
+- intercepta exceções que acontecerem para que esse obj possa executar um possível tratamento
+# Pesquisar
+- ResponseEntity
+- Serializable
+- ControllerAdvice
