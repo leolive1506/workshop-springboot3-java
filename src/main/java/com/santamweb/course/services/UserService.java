@@ -13,6 +13,8 @@ import com.santamweb.course.repositories.UserRepository;
 import com.santamweb.course.services.exceptions.DatabaseException;
 import com.santamweb.course.services.exceptions.ResourceNotFoundException;
 
+import jakarta.persistence.EntityNotFoundException;
+
 // registra como componente do spring
 @Service
 public class UserService {
@@ -43,13 +45,18 @@ public class UserService {
   }
 
   public User update(Long id, User obj) {
-    // deixa obj monitorado pelo JPA mas não vai no db ainda
-    // melhor que usar findById
-    // so prepara obj pra depois mexer com banco de dados
-    User entity = repository.getReferenceById(id);
-    updateData(entity, obj);
-  
-    return repository.save(entity);
+    try {
+      // deixa obj monitorado pelo JPA mas não vai no db ainda
+      // melhor que usar findById
+      // so prepara obj pra depois mexer com banco de dados
+      User entity = repository.getReferenceById(id);
+      updateData(entity, obj);
+    
+      return repository.save(entity);
+    } catch (EntityNotFoundException e) {
+      throw new ResourceNotFoundException(id);
+    }
+    
   }
 
   public void updateData(User entity, User obj) {
